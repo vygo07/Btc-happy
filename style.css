@@ -22,7 +22,7 @@ h1 {
 }
 
 .price {
-  transition: color 1.5s ease;
+  transition: color 0.5s ease;
   margin-left: 0.3em;
   margin-right: 0.5em;
   font-weight: bold;
@@ -30,14 +30,14 @@ h1 {
 
 .arrow {
   display: inline-block;
-  font-size: 1.5em;
+  font-size: 1.05em; /* zmenšeno o 30% */
   vertical-align: middle;
   opacity: 0;
-  transition: opacity 0.5s ease;
+  transition: opacity 0.3s ease;
   user-select: none;
-  width: 1.2em;
-  height: 1.2em;
-  line-height: 1.2em;
+  width: 0.84em;
+  height: 0.84em;
+  line-height: 0.84em;
 }
 
 .arrow.up {

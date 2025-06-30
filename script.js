@@ -5,9 +5,16 @@ let arrow = document.getElementById('arrow');
 
 async function fetchPrice() {
   try {
-    const res = await fetch('https://api.coingecko.com/api/v3/simple/price?ids=bitcoin&vs_currencies=usd');
+    const res = await fetch('https://api.coingecko.com/api/v3/simple/price?ids=bitcoin&vs_currencies=usd', {cache: "no-store"});
     const data = await res.json();
     const price = data.bitcoin.usd;
+
+    // Pokud cena nezměněna, nemusíme nic měnit, jen ukázat stále stejné hodnoty
+    if (price === lastPrice) {
+      arrow.style.opacity = '0';
+      return;
+    }
+
     priceEl.textContent = price.toLocaleString();
 
     if (lastPrice !== null) {
@@ -31,20 +38,19 @@ async function fetchPrice() {
         arrow.className = 'arrow down';
         arrow.style.opacity = '1';
         fadeOutArrow();
-      } else {
-        // Beze změny
-        emoji.textContent = '😐';
-        emoji.className = 'emoji neutral';
-
-        arrow.style.opacity = '0';
-        priceEl.style.color = '#fff';
       }
+    } else {
+      // První načtení, smajlík neutrální a barva bílá
+      emoji.textContent = '😐';
+      emoji.className = 'emoji neutral';
+      priceEl.style.color = '#fff';
+      arrow.style.opacity = '0';
     }
 
-    // Pomalu přechod zpět na bílou barvu za 3s
+    // Pomalu přechod zpět na bílou barvu za 1.5s (rychlejší než předtím)
     setTimeout(() => {
       priceEl.style.color = '#fff';
-    }, 3000);
+    }, 1500);
 
     lastPrice = price;
   } catch (err) {
@@ -58,6 +64,5 @@ function fadeOutArrow() {
   }, 3000);
 }
 
-// Start aktualizace
 fetchPrice();
-setInterval(fetchPrice, 3000);
+setInterval(fetchPrice, 1000);  // každou sekundu
