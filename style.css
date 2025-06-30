@@ -2,31 +2,71 @@ body {
   background-color: #111;
   color: white;
   font-family: sans-serif;
-  text-align: center;
   margin: 0;
-  padding-top: 50px;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
 }
+
 .container {
   max-width: 400px;
-  margin: auto;
+  width: 100%;
 }
+
 h1 {
-  font-size: 1.5em;
+  font-size: 2em;
+  position: relative;
+  display: inline-block;
 }
+
+.price {
+  transition: color 1.5s ease;
+  margin-left: 0.3em;
+  margin-right: 0.5em;
+  font-weight: bold;
+}
+
+.arrow {
+  display: inline-block;
+  font-size: 1.5em;
+  vertical-align: middle;
+  opacity: 0;
+  transition: opacity 0.5s ease;
+  user-select: none;
+  width: 1.2em;
+  height: 1.2em;
+  line-height: 1.2em;
+}
+
+.arrow.up {
+  color: #00ff00;
+}
+
+.arrow.down {
+  color: #ff3300;
+  transform: rotate(180deg);
+}
+
 .emoji {
   font-size: 5em;
   margin-top: 20px;
   transition: all 0.3s ease;
   text-shadow: 0 0 10px #fff;
+  user-select: none;
 }
+
 .emoji.up {
   color: #00ff00;
   text-shadow: 0 0 15px #00ff00;
 }
+
 .emoji.down {
   color: #ff0000;
   text-shadow: 0 0 15px #ff0000;
 }
+
 .emoji.neutral {
   color: #aaa;
   text-shadow: 0 0 10px #666;
