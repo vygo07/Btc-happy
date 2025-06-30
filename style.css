@@ -1,0 +1,33 @@
+body {
+  background-color: #111;
+  color: white;
+  font-family: sans-serif;
+  text-align: center;
+  margin: 0;
+  padding-top: 50px;
+}
+.container {
+  max-width: 400px;
+  margin: auto;
+}
+h1 {
+  font-size: 1.5em;
+}
+.emoji {
+  font-size: 5em;
+  margin-top: 20px;
+  transition: all 0.3s ease;
+  text-shadow: 0 0 10px #fff;
+}
+.emoji.up {
+  color: #00ff00;
+  text-shadow: 0 0 15px #00ff00;
+}
+.emoji.down {
+  color: #ff0000;
+  text-shadow: 0 0 15px #ff0000;
+}
+.emoji.neutral {
+  color: #aaa;
+  text-shadow: 0 0 10px #666;
+}
